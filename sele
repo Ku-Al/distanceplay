@@ -1,0 +1,5 @@
+
+from selenium import webdriver
+browser = webdriver.Firefox() # Get local session of firefox
+browser.get("http://www.yahoo.com") # Load page
+это Александру
