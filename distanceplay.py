@@ -52,33 +52,15 @@ def init_arduino():
    
 
 son = init_sound()
-ar = serial.Serial('/dev/ttyACM1', 9600)
+ar = serial.Serial('/dev/ttyACM0', 9600)
+file_list = {1:'dram/PERC1.WAV', 2:'dram/PERC2.WAV', 3:'dram/PERC3.WAV', 4:'dram/PERC4.WAV',
+5:'dram/PERC5.WAV', 6:'dram/PERC6.WAV', 7:'dram/PERC7.WAV', 8:'dram/SNARE1.WAV', 9:'dram/SNARE2.WAV',
+10:'dram/SNARE3.WAV'}
 
-tdv = 1
 while True:
-   D_V = int(ar.readline())
-   if D_V != tdv:
-    if D_V == 1:
-     play_file('dram/PERC1.WAV',son)
-    elif D_V == 2:
-     play_file('dram/PERC2.WAV',son)
-    elif D_V == 3:
-     play_file('dram/PERC3.WAV',son)
-    elif D_V == 4:
-     play_file('dram/PERC4.WAV',son)
-    elif D_V == 5:
-     play_file('dram/PERC5.WAV',son)
-    elif D_V == 6:
-     play_file('dram/PERC6.WAV',son)
-    elif D_V == 7:
-     play_file('dram/PERC7.WAV',son)
-    elif D_V == 8: 
-     play_file('dram/SNARE1.WAV',son)
-    elif D_V == 9: 
-     play_file('dram/SNARE2.WAV',son)
-    elif D_V == 10: 
-     play_file('dram/SNARE3.WAV',son)
-    else:
-     play_file('dram/CLAVE.WAV',son)
-   print D_V, '\n'
-   tdv = D_V
+ D_V = int(ar.readline())
+ print D_V, '\n'
+ play_file(file_list[D_V],son)
+
+
+
